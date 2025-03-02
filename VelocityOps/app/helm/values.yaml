@@ -1,0 +1,33 @@
+replicaCount: 2
+
+image:
+  repository: "rosilva2018/simple-node-app"
+  tag: "latest"
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 3000
+
+ingress:
+  enabled: false
+
+serviceAccount:
+  create: false  # Desativa a criação do ServiceAccount para evitar erro
+
+autoscaling:
+  enabled: false  # Desativa o HPA para evitar erro
+  minReplicas: 1
+  maxReplicas: 5
+  targetCPUUtilizationPercentage: 80
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+
+
